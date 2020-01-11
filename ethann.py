@@ -1,4 +1,4 @@
-class ethaNN:
+class EthaNN:
     def __init__(self):
         self.layers = []
 

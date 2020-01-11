@@ -10,6 +10,19 @@ class Layer(abc.ABC):
     def predict(sample):
         '''Output a prediction, given an input.'''
 
+    def show_neurons(self):
+        # Iterate over the rows of the weights matrix, showing that each one is
+        # a "neuron".
+        s = ''
+        for i, vector in enumerate(self.weights):
+            if i != 0:
+                s += '--------------------\n'
+            s += f'Neuron #{i}:\n'
+            s += f'weights: {vector}\n'
+            s += f'bias: {self.biases[i]}\n'
+            s += f'activation: {self.activation}\n'
+        return s
+
 class Dense(Layer):
     def __init__(self, activation, dim=None, n_input=None, n_output=None):
         # The user needs to either pass in dim or *both* n_input and n_output.
