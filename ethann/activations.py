@@ -2,7 +2,11 @@ import numpy as np
 
 def activation_from_name_or_function(user_input):
     if isinstance(user_input, str):
-        return activation_lookup[user_input]
+        if user_input in activation_lookup:
+            return activation_lookup[user_input]
+        else:
+            msg = f'{user_input} is not a valid activation name'
+            raise ValueError(msg)
     elif callable(user_input):
         return user_input
     else:
